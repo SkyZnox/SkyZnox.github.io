@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tirage au sort</title>
+</head>
+<body>
+    <h1>Tirage au sort de la map</h1>
+    <div>
+    <ul>
+        <li><input type="checkbox" id="element1" name="Haven"> Haven</li>
+        <li><input type="checkbox" id="element2" name="Split"> Split </li>
+        <li><input type="checkbox" id="element3" name="Bind"> Bind </li>
+        <li><input type="checkbox" id="element4" name="Lotus"> Lotus </li>
+        <li><input type="checkbox" id="element5" name="Sunset"> Sunset</li>
+        <li><input type="checkbox" id="element6" name="Ascent"> Ascent</li>
+        <li><input type="checkbox" id="element7" name="Breeze"> Breeze</li>
+    </ul>
+    </div>
+
+    <button id="tirer-au-sort">Tirer au sort la map</button>
+    <p id="resultat"></p>
+
+
+    <h1>Tirage au sort de l'équipe qui ban en premier et de l'équipe qui attaque en premier</h1>
+
+
+    <ul>
+        <li><input type="text" id="equipe1" name="A" placeholder="Equipe A"></li>
+        <li><input type="text" id="equipe2" name="B" placeholder="Equipe B"> </li>
+
+    </ul>
+
+    <button id="tirer-equipe">Tirer au sort l'équipe qui ban</button>
+    <button id="tirer-equipe2">Tirer au sort l'équipe qui attaque en premier</button>
+    <p id="resultat2"></p>
+    <p id="resultat3"></p>
+
+
+</body>
+</html>
+
+<script>
+
+    document.getElementById("tirer-au-sort").addEventListener("click", function() {
+        const elementsSelectionnes = [];
+
+        for (let i = 1; i <= 7; i++) {
+            const checkbox = document.getElementById("element" + i);
+            if (checkbox.checked) {
+                elementsSelectionnes.push(checkbox.name);
+            }
+        }
+
+        if (elementsSelectionnes.length > 0) {
+            const resultat = elementsSelectionnes[Math.floor(Math.random() * elementsSelectionnes.length)];
+            document.getElementById("resultat").textContent = "Map tirée au sort : " + resultat;
+        } else {
+            document.getElementById("resultat").textContent = "Aucun élément sélectionné.";
+        }
+    });
+
+
+    document.getElementById("tirer-equipe").addEventListener("click", function() {
+        const elementsSelectionnes = [];
+
+        for (let i = 1; i <= 2; i++) {
+            const checkbox = document.getElementById("equipe" + i);
+            if (checkbox.value.trim() !== "") {
+                elementsSelectionnes.push(checkbox.value);
+            }
+        }
+
+        if (elementsSelectionnes.length === 2) {
+            const resultat = elementsSelectionnes[Math.floor(Math.random() * elementsSelectionnes.length)];
+            document.getElementById("resultat2").textContent = "Équipe qui ban en premier : " + resultat;
+        } else if (elementsSelectionnes.length === 1) {
+            document.getElementById("resultat2").textContent = "Un seul élément sélectionné.";
+        } else {
+            document.getElementById("resultat2").textContent = "Aucun élément sélectionné.";
+
+        }
+    });
+
+    document.getElementById("tirer-equipe2").addEventListener("click", function() {
+        const elementsSelectionnes = [];
+
+        for (let i = 1; i <= 2; i++) {
+            const checkbox = document.getElementById("equipe" + i);
+            if (checkbox.value.trim() !== "") {
+                elementsSelectionnes.push(checkbox.value);
+            }
+        }
+
+        if (elementsSelectionnes.length === 2) {
+            const resultat = elementsSelectionnes[Math.floor(Math.random() * elementsSelectionnes.length)];
+            document.getElementById("resultat3").textContent = "Équipe qui attaque en premier : " + resultat;
+        } else if (elementsSelectionnes.length === 1) {
+            document.getElementById("resultat3").textContent = "Un seul élément sélectionné.";
+        } else {
+            document.getElementById("resultat3").textContent = "Aucun élément sélectionné.";
+
+        }
+    });
+
+
+</script>
+<style>/* Style de base pour le corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+
+/* Style pour l'en-tête */
+h1 {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Style pour la liste d'éléments */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* Style pour les cases à cocher */
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Style pour le bouton "Tirer au sort" */
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Style pour le résultat */
+#resultat {
+    font-weight: bold;
+    margin: 20px 0;
+}
+#resultat2 {
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+#resultat3 {
+    font-weight: bold;
+    margin: 20px 0;
+}
+</style>
